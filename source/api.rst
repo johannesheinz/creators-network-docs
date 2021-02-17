@@ -84,18 +84,13 @@ Retrieving an authentication token
    .. code-block:: python
 
       import requests
+      
+      url = 'https://network-api.onefootball.com/v1/login'
+      data = {'login': 'EMAIL_ADDRESS', 'password': 'SECRET_PASSWORD'}
 
-      headers = {
-          'Content-Type': 'application/json',
-      }
-
-      data = {"login": "EMAIL_ADDRESS", "password": "SECRET_PASSWORD"}
-
-      response = requests.post(
-          'https://network-api.onefootball.com/v1/login',
-          headers=headers,
-          data=data
-      )
+      response = requests.post(url, json=data)
+      if response.ok:
+            print(response.json()['access_token'])
 
    .. code-block:: go
 
